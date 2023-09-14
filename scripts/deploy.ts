@@ -4,9 +4,9 @@ import { Logger } from 'tslog'
 import config from './config/config'
 import { ethers } from 'ethers'
 import { parseEther } from 'ethers/lib/utils'
-import { DiffusionBar, MiniChefV2 } from '../dist/types'
+import { LeetBar, MiniChefV2 } from '../dist/types'
 import { deployedBytecode as localMiniChef } from '../artifacts/contracts/MiniChefV2.sol/MiniChefV2.json'
-import { deployedBytecode as localXDiff } from '../artifacts/contracts/xDiff.sol/DiffusionBar.json'
+import { deployedBytecode as localXDiff } from '../artifacts/contracts/LeetBar.sol/LeetBar.json'
 
 const logger: Logger = new Logger()
 
@@ -21,16 +21,16 @@ task('verify-deployed-bytecode')
         const deployedXDiff = await hre.ethers.provider.getTransaction("0x571c252c9658e281f6065241d007888df86942bf558d632f50d2fdfa09e6ee4d")
 
         const miniChefFactory = await hre.ethers.getContractFactory(`contracts/MiniChefV2.sol:MiniChefV2`);
-        const xDiffFactory = await hre.ethers.getContractFactory(`contracts/xDiff.sol:DiffusionBar`);
+        const LeetBarFactory = await hre.ethers.getContractFactory(`contracts/LeetBar.sol:LeetBar`);
 
         logger.info(deployedMiniChef.data === (miniChefFactory.getDeployTransaction(config.rewardToken)).data);
-        logger.info(deployedXDiff.data === (xDiffFactory.getDeployTransaction(config.diffusion)).data);
+        logger.info(deployedXDiff.data === (LeetBarFactory.getDeployTransaction(config.diffusion)).data);
 
     });
 
-task('deploy-xdiffusion')
+task('deploy-leetbar')
     .setAction(async (args, hre) => {
-        const factory = await hre.ethers.getContractFactory(`contracts/xDiff.sol:DiffusionBar`);
+        const factory = await hre.ethers.getContractFactory(`contracts/LeetBar.sol:LeetBar`);
         const instance = await factory.deploy(config.diffusion);
 
         await instance.deployed();
