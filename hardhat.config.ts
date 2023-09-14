@@ -38,27 +38,37 @@ const config: HardhatUserConfig = {
     hardhat: {
       gasPrice: utils.parseUnits("60", "gwei").toNumber(),
     },
-    mainnet: {
-      url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_PROJECT_ID}`,
+    base: {
+      url: "https://mainnet.base.org",
       accounts: [DEPLOYER_PRIVATE_KEY],
-      gasPrice: utils.parseUnits("150", "gwei").toNumber(),
+      // gasPrice: utils.parseUnits("150", "gwei").toNumber(),
     },
-    rinkeby: {
-      url: `https://eth-rinkeby.alchemyapi.io/v2/${ALCHEMY_PROJECT_ID}`,
+    canto: {
+      url: "https://canto.slingshot.finance",
       accounts: [DEPLOYER_PRIVATE_KEY],
-      gasPrice: utils.parseUnits("4.002", "gwei").toNumber(),
+      // gasPrice: utils.parseUnits("150", "gwei").toNumber(),
     },
-    evmostestnet: {
-      url: `https://eth.bd.evmos.dev:8545`,
+    opbnb: {
+      url: "https://opbnb-mainnet-rpc.bnbchain.org",
       accounts: [DEPLOYER_PRIVATE_KEY],
-      gasPrice: utils.parseUnits("50", "gwei").toNumber(),
+      // gasPrice: utils.parseUnits("150", "gwei").toNumber(),
     },
-    evmosmainnet: {
-      url: `https://eth.bd.evmos.org:8545/`,
+    shibarium: {
+      url: "https://www.shibrpc.com",
       accounts: [DEPLOYER_PRIVATE_KEY],
-      gasPrice: utils.parseUnits("50", "gwei").toNumber(),
-      chainId: 9001
+      // gasPrice: utils.parseUnits("150", "gwei").toNumber(),
     },
+    linea: {
+      url: "https://rpc.linea.build",
+      accounts: [DEPLOYER_PRIVATE_KEY],
+      // gasPrice: utils.parseUnits("150", "gwei").toNumber(),
+    },
+    manta: {
+      url: "https://pacific-rpc.manta.network/http",
+      accounts: [DEPLOYER_PRIVATE_KEY],
+      // gasPrice: utils.parseUnits("150", "gwei").toNumber(),
+    },
+
   },
   abiExporter: {
     path: "./dist/abi",
