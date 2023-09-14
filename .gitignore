@@ -3,6 +3,5 @@ build/
 dist/
 cache/
 artifacts/
-yarn.lock
 .env
 .DS_Store
